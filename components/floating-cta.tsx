@@ -1,38 +1,38 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Download, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Download, X } from "lucide-react";
 
 export default function FloatingCTA() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [isDismissed, setIsDismissed] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!isDismissed) {
-        setIsVisible(true)
+        setIsVisible(true);
       }
-    }, 5000)
+    }, 5000);
 
     const scrollHandler = () => {
       if (window.scrollY > 1000 && !isDismissed) {
-        setIsVisible(true)
+        setIsVisible(true);
       }
-    }
+    };
 
-    window.addEventListener("scroll", scrollHandler)
+    window.addEventListener("scroll", scrollHandler);
 
     return () => {
-      clearTimeout(timer)
-      window.removeEventListener("scroll", scrollHandler)
-    }
-  }, [isDismissed])
+      clearTimeout(timer);
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, [isDismissed]);
 
   const handleDismiss = () => {
-    setIsVisible(false)
-    setIsDismissed(true)
-  }
+    setIsVisible(false);
+    setIsDismissed(true);
+  };
 
   return (
     <AnimatePresence>
@@ -58,12 +58,19 @@ export default function FloatingCTA() {
               </div>
               <div>
                 <h3 className="font-bold text-gray-900">Get Gains Chat Now</h3>
-                <p className="text-sm text-gray-600">Track your workouts with AI assistance</p>
+                <p className="text-sm text-gray-600">
+                  Track your workouts with AI assistance
+                </p>
               </div>
             </div>
 
             <button
-              onClick={() => window.open("https://apps.apple.com", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://apps.apple.com/us/app/gains-chat/id6744004900",
+                  "_blank"
+                )
+              }
               className="w-full bg-[#007AFF] hover:bg-[#0062CC] text-white py-2 rounded-lg font-medium transition-colors"
             >
               Download on App Store
@@ -72,5 +79,5 @@ export default function FloatingCTA() {
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }
