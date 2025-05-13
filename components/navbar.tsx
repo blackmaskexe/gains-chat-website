@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Download, Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Download, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
@@ -28,8 +28,20 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Image src="/images/logo.png" alt="Gains Chat Logo" width={40} height={40} className="mr-2" />
-            <span className={`font-bold text-xl ${isScrolled ? "text-[#007AFF]" : "text-white"}`}>Gains Chat</span>
+            <Image
+              src="/images/logo.png"
+              alt="Gains Chat Logo"
+              width={40}
+              height={40}
+              className="mr-2"
+            />
+            <span
+              className={`font-bold text-xl ${
+                isScrolled ? "text-[#007AFF]" : "text-white"
+              }`}
+            >
+              Gains Chat
+            </span>
           </div>
 
           {/* Desktop Navigation */}
@@ -60,7 +72,12 @@ export default function Navbar() {
             </a>
             <Button
               className="bg-[#007AFF] hover:bg-[#0062CC] rounded-full px-6 py-2 flex items-center"
-              onClick={() => window.open("https://apps.apple.com", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://apps.apple.com/us/app/gains-chat/id6744004900",
+                  "_blank"
+                )
+              }
             >
               <Download size={16} className="mr-2" />
               Download App
@@ -125,5 +142,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }

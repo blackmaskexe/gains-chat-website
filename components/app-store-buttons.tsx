@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Apple } from "lucide-react"
+import { motion } from "framer-motion";
+import { Apple } from "lucide-react";
 
 export default function AppStoreButtons() {
   return (
-    <div className="flex justify-center mt-6">
+    <div className="flex justify-center md:justify-start mt-6 mb-6">
       <motion.a
-        href="https://apps.apple.com"
+        href="https://apps.apple.com/us/app/gains-chat/id6744004900"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center bg-black text-white px-8 py-4 rounded-xl hover:bg-gray-900 transition-colors"
@@ -21,5 +21,5 @@ export default function AppStoreButtons() {
         </div>
       </motion.a>
     </div>
-  )
+  );
 }

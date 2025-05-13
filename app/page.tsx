@@ -1,27 +1,34 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { Dumbbell, LineChart, MessageSquare, Shield, Sparkles, Download } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import CursorGlow from "@/components/cursor-glow"
-import FeatureCard from "@/components/feature-card"
-import ComparisonTable from "@/components/comparison-table"
-import Navbar from "@/components/navbar"
-import ScreenshotsSection from "@/components/screenshots-section"
-import AppStoreButtons from "@/components/app-store-buttons"
-import FloatingCTA from "@/components/floating-cta"
-import Image from "next/image"
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  Dumbbell,
+  LineChart,
+  MessageSquare,
+  Shield,
+  Sparkles,
+  Download,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import CursorGlow from "@/components/cursor-glow";
+import FeatureCard from "@/components/feature-card";
+import ComparisonTable from "@/components/comparison-table";
+import Navbar from "@/components/navbar";
+import ScreenshotsSection from "@/components/screenshots-section";
+import AppStoreButtons from "@/components/app-store-buttons";
+import FloatingCTA from "@/components/floating-cta";
+import Image from "next/image";
 
 export default function Home() {
-  const targetRef = useRef<HTMLDivElement>(null)
+  const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end start"],
-  })
+  });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.6])
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.6]);
 
   const featureVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -33,7 +40,7 @@ export default function Home() {
         duration: 0.5,
       },
     }),
-  }
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center">
@@ -58,18 +65,25 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="text-center md:text-left md:w-1/2"
             >
-              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6">Gains Chat</h1>
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
+                Gains Chat
+              </h1>
 
               <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90">
                 Your AI Workout Assistant at Your Fingertips
               </p>
 
               <p className="text-white/80 text-base md:text-lg mb-8">
-                Track your workouts effortlessly with the help of your own AI Workout Assistant! Simply chat with your
-                AI and let it log your progress.
+                Track your workouts effortlessly with the help of your own AI
+                Workout Assistant! Simply chat with your AI and let it log your
+                progress.
               </p>
 
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.5 }}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+              >
                 <AppStoreButtons />
               </motion.div>
             </motion.div>
@@ -83,7 +97,7 @@ export default function Home() {
               <div className="relative h-[400px] md:h-[500px] flex items-center justify-center">
                 <div className="absolute w-full h-full bg-white/20 rounded-full filter blur-[80px]"></div>
                 <Image
-                  src="/images/homeMockup.png"
+                  src="/images/logandhistoryMockup.png"
                   alt="Gains Chat App Home Screen"
                   width={350}
                   height={700}
@@ -215,7 +229,12 @@ export default function Home() {
             <Button
               size="lg"
               className="bg-[#007AFF] hover:bg-[#0062CC] rounded-full px-8 py-6 text-lg"
-              onClick={() => window.open("https://apps.apple.com", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://apps.apple.com/us/app/gains-chat/id6744004900",
+                  "_blank"
+                )
+              }
             >
               Download Now <Download className="ml-2" size={18} />
             </Button>
@@ -227,7 +246,7 @@ export default function Home() {
       <ScreenshotsSection />
 
       {/* Interactive Cursor Glow Section */}
-      <CursorGlow />
+      {/* <CursorGlow /> */}
 
       {/* Comparison Section */}
       <section id="comparison" className="w-full py-20 bg-white">
@@ -277,7 +296,8 @@ export default function Home() {
               transition={{ delay: 0.1, duration: 0.5 }}
               className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8"
             >
-              Join thousands of fitness enthusiasts who have revolutionized their workout tracking with Gains Chat.
+              Join thousands of fitness enthusiasts who have revolutionized
+              their workout tracking with Gains Chat.
             </motion.p>
 
             <motion.div
@@ -294,24 +314,41 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full py-12 bg-gray-900 text-white">
+      {/* <footer className="w-full py-12 bg-gray-900 text-white">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0 text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start">
-                <Image src="/images/logo.png" alt="Gains Chat Logo" width={40} height={40} className="mr-2" />
+                <Image
+                  src="/images/logo.png"
+                  alt="Gains Chat Logo"
+                  width={40}
+                  height={40}
+                  className="mr-2"
+                />
                 <span className="text-xl font-bold">Gains Chat</span>
               </div>
-              <p className="text-gray-400 mt-2">© 2025 Gains Chat. All rights reserved.</p>
+              <p className="text-gray-400 mt-2">
+                © 2025 Gains Chat. All rights reserved.
+              </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <a href="#" className="text-gray-400 hover:text-[#007AFF] transition-colors">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-[#007AFF] transition-colors"
+              >
                 Privacy
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#007AFF] transition-colors">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-[#007AFF] transition-colors"
+              >
                 Terms
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#007AFF] transition-colors">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-[#007AFF] transition-colors"
+              >
                 Contact
               </a>
               <Button
@@ -325,7 +362,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </main>
-  )
+  );
 }
